@@ -1,96 +1,13 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Reboot by AquaGeek</title>
+---
+layout: default
+title: Space is Disorienting
+---
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Reboot</h1>
-        <p>Or how I learned to stop procrastinating and write something down.</p>
-
-
-        <p class="view"><a href="https://github.com/AquaGeek">View My GitHub Profile</a></p>
-
-      </header>
-      <section>
-        <h2>Backstory</h2>
-
-<p>OK, technically this isn't so much a "reboot" as it is just a plain old "boot." For the past two years, this site in its entirety consisted of the following index.html file:</p>
-
-<pre><code>Hello
-</code></pre>
-
-<p>I know – fascinating, isn't it?</p>
-
-<p>I've been procrastinating for a long time, but I think I've finally found a good place to start.</p>
-
-<h2>London</h2>
-
-<p>Last year, my wife and I took a vacation to London. Before heading across the pond we amassed a lengthy list of places to visit/things to see. I ended up writing an iPhone app to help organize that list. Here it is in all its glory:</p>
-
-<p><img src="/images/Map.png" alt="Map"></p>
-
-<p>In addition to just plotting all the points on a map, each location includes some additional information such as our level of interest in visiting it, its website (if it has one), opening hours and admission prices, etc. It also allows you mark locations as visited and filter them out of the map view.</p>
-
-<p><img src="/images/Details.png" alt="Map"></p>
-
-<p>The three main goals of the app were to:</p>
-
-<ol>
-<li>Help us find our way around the city from point to point</li>
-<li>Ensure we visited all the places we <em>really</em> wanted to</li>
-<li>Show us any lower priority places nearby in case we found ourselves with some extra time</li>
-</ol><p>In all, it worked wonderfully for our trip. We didn't make it to half the places in the app, but we made it to all the important ones.</p>
-
-<p>That being said, I cut a lot of corners to get all the data into the app and the app ready in time.</p>
-
-<h2>The backend</h2>
-
-<p>I threw together a Rails app on the backend to keep track of all the points-of-interest, handle cleaning up and geocoding addresses, and to generate the necessary JSON for loading them into the app, because it was substantially easier than trying to manage a JSON file by hand.</p>
-
-<blockquote>
-<p>Actually, truth be told, I ended up entering a bunch of stuff by hand anyway, but now I can't remember what.</p>
-</blockquote>
-
-<p>Unfortunately, I never got around to deploying the Rails app or updating the iOS app to talk to it before our trip. The iOS app just loaded all of the points-of-interest from a static file in the app bundle, which is just as well because, oh, how US wireless carriers <strong>love</strong> to charge absurd rates for those international kilobytes!</p>
-
-<p>The <code>static-JSON-file-in-the-app-bundle</code> approach worked out well for our trip, but it obviously doesn't scale.</p>
-
-<h2>The project</h2>
-
-<p>And that brings me to this blog. Over the course of the next several weeks, I'm going to be rebuilding this app from scratch and documenting the process. Hopefully it will give you some insight into the app development process (or at least my version of it).</p>
-
-<blockquote>
-<p>Technically, we could just take the existing code and update it, but I think it will be easier to follow and more helpful if we start from zero.</p>
-</blockquote>
-
-<h3>Codename</h3>
-
-<p>Every good project needs a codename, and this one is no exception. Seeing as we're dealing with mapping and exploration, I've landed on "Vespucci" – after the Italian explorer.</p>
-
-<h2>Whoami?</h2>
-
-<p>My name is Tyler. I've been developing in Objective-C for 10 years now. I got into the iOS Developer Program in March of 2008 (i.e. before the App Store launched), and have been doing iOS development pretty much ever since.</p>
-
-<p>I was the lead iOS engineer in the ground-up rewrite of the Fly Delta app for Delta Air Lines (v2.0) and have worked on several other projects for well-known clients.</p>
-
-<p>You can find me on GitHub as <a href="https://github.com/aquageek" class="user-mention">@aquageek</a> (also on <a href="http://twitter.com/aqua_geek">Twitter</a>).</p>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
-</html>
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
